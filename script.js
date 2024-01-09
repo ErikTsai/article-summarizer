@@ -1,6 +1,31 @@
-const apiKey = "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";
+import { process } from './env.js'
+
+// const apiKey = "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";
 
 const url = "https://api.openai.com/v1/chat/completions";
+const apiKey = process.env.OPENAI_API_KEY;
+
+let summarizerActivated = false;
+let generateBtnEl = document.getElementById("generate-btn");
+let inputDescEl = document.getElementById("input-desc");
+let inputBoxEl = document.getElementById("input-box");
+let pasteFieldEl = document.getElementById("paste-field");
+let wordCountEl = document.getElementById("word-count");
+
+
+generateBtnEl.addEventListener("click", () => {
+  if (summarizerActivated === false) {
+    generateBtnEl.textContent = "Use again?";
+    summarizerActivated = true;
+    inputDescEl.innerHTML = "";
+    inputBoxEl.innerHTML = "";
+    summarizeText(pasteFieldEl.value, wordCountEl.value);
+    
+  } else {
+    location.reload();
+  }
+});
+
 
 function summarizeText(text, words) {
   fetch(url, {
@@ -18,38 +43,15 @@ function summarizeText(text, words) {
         },
         {
           role: "user",
-          content: `Summarize in ${words} words or less: ${text}`,
+          content: `Summarize in ${words} words: ${text}`,
         },
       ],
     }),
   })
     .then((res) => res.json())
-    .then((data) => data.choices[0].message.content);
+    .then((data) => inputBoxEl.innerHTML = `<p id="output-text">${data.choices[0].message.content}</p>`);
 }
-console.log(summarizeText(,))
-// let summarizerActivated = true;
-// let generateBtnEl = document.getElementById("generate-btn");
-// let inputDescEl = document.getElementById("input-desc");
-// let inputBoxEl = document.getElementById("input-box");
-// let pasteFieldEl = document.getElementById("paste-field");
-// let wordCountEl = document.getElementById("word-count");
 
-// generateBtnEl.addEventListener("click", () => {
-//   let words = summarizeText(pasteFieldEl.value, wordCountEl.value);
-//   if (summarizerActivated === false) {
-//     generateBtnEl.textContent = "Use again?";
-//     summarizerActivated = true;
-//     inputDescEl.innerHTML = "";
-//     inputBoxEl.innerHTML = `<p id="output-text">${words}</p>`;
-//   } else {
-//     generateBtnEl.textContent = "Generate";
-//     summarizerActivated = false;
-//     inputDescEl.innerHTML = `Desired Word Count: <input id="word-count" type="text" />`;
-//     inputBoxEl.innerHTML = `<textarea
-//     id="paste-field"
-//     maxlength="10000"
-//     placeholder="Paste text here..."
-//     required=""
-//   ></textarea>`;
-//   }
-// });
+
+
+
