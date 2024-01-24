@@ -11,8 +11,13 @@ body {
 /* header css */
 .header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 20px auto;
+}
+
+#holds{
+  display: flex;
 }
 
 #logo {
@@ -121,4 +126,8 @@ body {
   padding: 20px;
   font-size: 1rem;
   background-color: whitesmoke;
+}
+
+#loading {
+  
 }
