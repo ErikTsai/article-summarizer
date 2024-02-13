@@ -116,7 +116,7 @@ Install Node.JS at [https://nodejs.org/en/download/current](https://nodejs.org/e
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
 
 1. Get a free OpenAPI Key by following this video: [https://youtu.be/nafDyRsVnXU?si=iDQBrmgxrt5_lF9x](https://youtu.be/nafDyRsVnXU?si=iDQBrmgxrt5_lF9x)
 2. Clone the repo
