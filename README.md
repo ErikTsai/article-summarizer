@@ -72,8 +72,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<div style="width:100%; display: flex; justify-content: center; align-items: center;">
+
 
 ![Picture](https://raw.githubusercontent.com/ErikTsai/spark-sum/main/sparkSumPreview.png)
+</div>
+
 
 SparkSum is a text summarizer powered by the OpenAI API's chat completion feature. The user will enter a text they want summarized, as well as the desired word count of the outputted summarized text. This application has not been deployed.
 
